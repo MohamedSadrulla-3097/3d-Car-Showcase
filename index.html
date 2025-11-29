@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAR SHOWCASE</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+
+
+  <!-- ================= MAIN SHOWCASE ================= -->
+  <section class="showcase">
+    <h1 id="carName" class="car-title">M 5-SERIES</h1>
+
+    <img class="background-image" src="Pictures/background.jpg" alt="">
+    <img id="carLogo" class="car-logo" src="Pictures/bmwLogo.png">
+
+    <div id="dCanvas" class="canvas-box"></div>
+
+    <!-- Buttons -->
+    <button id="prevCar" class="nav-btn">&#10094;</button>
+    <button id="nextCar" class="nav-btn">&#10095;</button>
+
+    <!-- ================= SPEC CARDS ================= -->
+    <div class="specs">
+      <div class="spec-card" id="specPrice">Price</div>
+      <div class="spec-card" id="specSpeed">Speed</div>
+      <div class="spec-card" id="specPower">Power</div>
+      <div class="spec-card" id="specGearbox">Gearbox</div>
+    </div>
+
+  </section>
+
+  <script type="module" src="app.js"></script>
+</body>
+
+</html>

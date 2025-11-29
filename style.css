@@ -1,0 +1,165 @@
+* {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: black;
+  overflow-x: hidden;
+}
+
+/* NAV BAR */
+.nav {
+  text-align: center;
+  justify-content: center;
+  gap: 40px;
+  padding-top: 30px;
+  font-size: 18px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #ffffffcc;
+  transition: 0.2s;
+}
+
+.nav a:hover {
+  color: #ffffff;
+}
+
+/* TITLE */
+.car-title {
+  display: flex;
+  position: absolute;
+  width: 100vw;
+  z-index: 10;
+  color: white;
+  top: 5%;
+  text-align: center;
+  justify-content: center;
+  font-size: 5rem;
+  margin: 40px 0 20px 0;
+  font-weight: 700;
+  padding-left: 18vw;
+  padding-top: 10vh;
+}
+
+/* MAIN SHOWCASE */
+.car-showcase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+/* CANVAS BOX */
+.canvas-box {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+
+/* LOGO BEHIND CAR */
+.car-logo {
+  position: absolute;
+  top: 25%;
+  left: 40%;
+  width: 40vw;
+  padding-top: 15vh;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.15;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* BACKGROUND IMAGE (IF USED) */
+.background-image {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+}
+
+/* NAV BUTTONS */
+.nav-btn {
+  background: white;
+  color: black;
+  border: none;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  font-size: 35px;
+  font-weight: 900;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+}
+
+.nav-btn:hover {
+  transform: scale(1.1);
+}
+
+#prevCar {
+  margin-left: 10rem;
+  left: 0;
+}
+
+#nextCar {
+  margin-right: 10rem;
+  right: 0;
+}
+
+/* SPEC CARDS — RESTORED */
+.specs {
+  position: absolute;
+  bottom: 5%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  z-index: 15;
+}
+
+.spec-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 40px 30px;
+  color: rgb(255, 94, 0);
+  font-size: 1.3rem;
+  font-weight: 400;
+  min-width: 170px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: 0.2s ease;
+}
+
+
+
+/* OPTIONAL: smooth fade animation for updates */
+.spec-card.fade {
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+
+/* BUTTON HOLDER */
+.button-div {
+  display: flex;
+  margin-top: 400px;
+  position: static;
+}
