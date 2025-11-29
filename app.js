@@ -7,7 +7,6 @@ import { RGBELoader }
   from 'https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/RGBELoader.js';
 import TWEEN from 'https://cdn.jsdelivr.net/npm/@tweenjs/tween.js@18.6.4/dist/tween.esm.js';
 
-// -------------------- BASIC SETUP --------------------
 
 let canvasform = document.getElementById('dCanvas');
 let width = canvasform.offsetWidth;
@@ -19,24 +18,20 @@ let camera = new THREE.PerspectiveCamera(65, width / height, 0.9, 1000);
 let object;
 let loader = new GLTFLoader();
 
-// Renderer
+
 let renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
 renderer.setSize(width, height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 canvasform.appendChild(renderer.domElement);
 
-// High quality renderer settings
+
 renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.physicallyCorrectLights = true;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.45;
 
-// Camera start position
-camera.position.set(6, 2, 6);
 
-// ---------------------------------------------------------
-//               HDRI ENVIRONMENT (REALISM BOOST)
-// ---------------------------------------------------------
+camera.position.set(6, 2, 6);
 
 const pmrem = new THREE.PMREMGenerator(renderer);
 
@@ -50,33 +45,21 @@ new RGBELoader().load(
   }
 );
 
-// ---------------------------------------------------------
-//               LIGHTING (TRUE STUDIO GRADE)
-// ---------------------------------------------------------
-
-// Soft fill
 let ambientLight = new THREE.AmbientLight(0xffffff, 0.55);
 scene.add(ambientLight);
 
-// Strong key light
 let keyLight = new THREE.DirectionalLight(0xf, 0.0);
 keyLight.position.set(0, 0, 0);
 keyLight.castShadow = true;
 scene.add(keyLight);
 
-// Rim light for edges
 let rimLight = new THREE.DirectionalLight(0xffffff, 0.4);
 rimLight.position.set(-10, 6, -4);
 scene.add(rimLight);
 
-// Bounce floor light
 let bounceLight = new THREE.DirectionalLight(0xffffff, 0.9);
 bounceLight.position.set(0, -5, 0);
 scene.add(bounceLight);
-
-// ---------------------------------------------------------
-//               ORBIT CONTROLS
-// ---------------------------------------------------------
 
 let controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
@@ -86,7 +69,6 @@ controls.maxDistance = 9;
 controls.maxPolarAngle = Math.PI / 2.5;
 controls.minPolarAngle = Math.PI / 3.0;
 
-// Animation loop
 function animate() {
   requestAnimationFrame(animate);
   controls.update();
@@ -95,9 +77,6 @@ function animate() {
 }
 animate();
 
-// ---------------------------------------------------------
-//               NORMALIZE CAR SIZE
-// ---------------------------------------------------------
 function normalizeModel(model, targetSize = 8) {
   const box = new THREE.Box3().setFromObject(model);
   const size = new THREE.Vector3();
@@ -112,10 +91,6 @@ function normalizeModel(model, targetSize = 8) {
   const center = newBox.getCenter(new THREE.Vector3());
   model.position.sub(center);
 }
-
-// ---------------------------------------------------------
-//               CAR DATA ARRAYS
-// ---------------------------------------------------------
 
 const carNames = [
   "M 5-SERIES",
@@ -133,7 +108,6 @@ const carLogo = [
   "Pictures/dodgeLogo.png"
 ];
 
-// FULLY EDITABLE SPEC SYSTEM
 const carSpecs = [
   { price: "₹2.01 Crore", speed: "250 km/h", power: "600 HP", gearbox: "8-Speed Auto" },
   { price: "₹8.89 Crore", speed: "447 km/h", power: "1160 HP", gearbox: "7-Speed DCT" },
@@ -143,22 +117,19 @@ const carSpecs = [
 ];
 
 const cars = [
-  'Car3Dmodels/bmw.glb',
-  'Car3Dmodels/lamborghini.glb',
-  'Car3Dmodels/porsche.glb',
-  'Car3Dmodels/R34.glb',
-  'Car3Dmodels/srt.glb'
+  'public/Car3Dmodels/bmw.glb',
+  'public/Car3Dmodels/lamborghini.glb',
+  'public/Car3Dmodels/porsche.glb',
+  'public/Car3Dmodels/R34.glb',
+  'public/Car3Dmodels/srt.glb'
 ];
+
 
 let carIndex = 0;
 
-// ---------------------------------------------------------
-//               LOAD CAR FUNCTION
-// ---------------------------------------------------------
 
 function loadCar(index) {
 
-  // Remove old model + free GPU
   if (object) {
     scene.remove(object);
     object.traverse((child) => {
@@ -179,7 +150,6 @@ function loadCar(index) {
       normalizeModel(object, 7.5);
       scene.add(object);
 
-      // Update UI elements
       document.getElementById('carName').innerText = carNames[index];
       document.getElementById('carLogo').src = carLogo[index];
 
@@ -188,7 +158,6 @@ function loadCar(index) {
       document.getElementById("specPower").innerText = carSpecs[index].power;
       document.getElementById("specGearbox").innerText = carSpecs[index].gearbox;
 
-      // Enhance materials
       object.traverse((child) => {
         if (child.isMesh) {
           child.material.metalness = 0.5;
@@ -201,10 +170,8 @@ function loadCar(index) {
   );
 }
 
-// Load first car
 loadCar(0);
 
-// Buttons
 document.getElementById('nextCar').addEventListener('click', () => {
   carIndex = (carIndex + 1) % cars.length;
   loadCar(carIndex);

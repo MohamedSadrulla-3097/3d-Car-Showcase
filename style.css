@@ -9,7 +9,6 @@ body {
   overflow-x: hidden;
 }
 
-/* NAV BAR */
 .nav {
   text-align: center;
   justify-content: center;
@@ -28,7 +27,6 @@ body {
   color: #ffffff;
 }
 
-/* TITLE */
 .car-title {
   display: flex;
   position: absolute;
@@ -45,7 +43,6 @@ body {
   padding-top: 10vh;
 }
 
-/* MAIN SHOWCASE */
 .car-showcase {
   display: flex;
   align-items: center;
@@ -53,7 +50,6 @@ body {
   gap: 40px;
 }
 
-/* CANVAS BOX */
 .canvas-box {
   position: absolute;
   top: 0;
@@ -66,7 +62,6 @@ body {
   z-index: 5;
 }
 
-/* LOGO BEHIND CAR */
 .car-logo {
   position: absolute;
   top: 25%;
@@ -81,7 +76,6 @@ body {
   pointer-events: none;
 }
 
-/* BACKGROUND IMAGE (IF USED) */
 .background-image {
   display: flex;
   position: absolute;
@@ -90,7 +84,6 @@ body {
   top: 0;
 }
 
-/* NAV BUTTONS */
 .nav-btn {
   background: white;
   color: black;
@@ -124,7 +117,6 @@ body {
   right: 0;
 }
 
-/* SPEC CARDS — RESTORED */
 .specs {
   position: absolute;
   bottom: 5%;
@@ -149,15 +141,11 @@ body {
   transition: 0.2s ease;
 }
 
-
-
-/* OPTIONAL: smooth fade animation for updates */
 .spec-card.fade {
   opacity: 0;
   transition: 0.2s ease-in-out;
 }
 
-/* BUTTON HOLDER */
 .button-div {
   display: flex;
   margin-top: 400px;
