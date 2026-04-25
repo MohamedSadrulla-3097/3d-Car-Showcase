@@ -80,19 +80,21 @@ ground.position.y = -0.1;
 scene.add(ground);
 
 // --- 2026 TREND: DIGITAL TWIN & AERO SCANNER EFFECTS ---
-// Subtle blueprint grid in Black for contrast on white floor
-const gridHelper = new THREE.GridHelper(100, 100, 0x000000, 0x000000);
+const isMobile = window.innerWidth < 768;
+
+// Subtle blueprint grid
+const gridHelper = new THREE.GridHelper(100, isMobile ? 40 : 100, 0x000000, 0x000000);
 gridHelper.material.opacity = 0.03;
 gridHelper.material.transparent = true;
 gridHelper.position.y = -0.09;
 scene.add(gridHelper);
 
-// EV Charging / Data Scanner Rings in Blue and Red
+// EV Charging / Data Scanner Rings
 const techRings = new THREE.Group();
 scene.add(techRings);
-const ringColors = [0x00aaff, 0xff2200, 0x00aaff]; // Cyber Blue and Racing Red
-for (let i = 0; i < 3; i++) {
-  const ringGeom = new THREE.RingGeometry(8 + i * 2.5, 8.05 + i * 2.5, 64, 1, 0, Math.PI * 1.5);
+const ringColors = [0x00aaff, 0xff2200, 0x00aaff];
+for (let i = 0; i < (isMobile ? 2 : 3); i++) {
+  const ringGeom = new THREE.RingGeometry(8 + i * 2.5, 8.05 + i * 2.5, isMobile ? 32 : 64, 1, 0, Math.PI * 1.5);
   const ringMat = new THREE.MeshBasicMaterial({ 
     color: ringColors[i], 
     transparent: true, 
@@ -105,9 +107,9 @@ for (let i = 0; i < 3; i++) {
   techRings.add(ring);
 }
 
-// LiDAR Scanning / Aero Wind Particles
+// LiDAR Scanning / Aero Wind Particles - Reduced for Mobile
 const particlesGeom = new THREE.BufferGeometry();
-const particleCount = 1000;
+const particleCount = isMobile ? 300 : 1000;
 const posArray = new Float32Array(particleCount * 3);
 const colorArray = new Float32Array(particleCount * 3);
 
@@ -126,7 +128,7 @@ particlesGeom.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
 particlesGeom.setAttribute('color', new THREE.BufferAttribute(colorArray, 3));
 
 const particlesMat = new THREE.PointsMaterial({
-  size: 0.05,
+  size: isMobile ? 0.08 : 0.05,
   vertexColors: true,
   transparent: true,
   opacity: 0.2

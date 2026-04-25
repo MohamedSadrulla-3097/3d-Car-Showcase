@@ -197,9 +197,10 @@ body {
   }
   .specs {
     grid-template-columns: repeat(2, 1fr);
-    bottom: 6vh; /* Increased from 3vh for better visibility on tall screens */
-    gap: 10px;
-    width: 92%;
+    bottom: 12vh; /* Significantly increased to clear system bars */
+    gap: 8px;
+    width: 90%;
+    margin-bottom: 20px; /* Extra breathing room */
   }
   .spec-card {
     padding: 10px;
