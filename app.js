@@ -147,18 +147,18 @@ topLight.position.set(5, 15, 5);
 scene.add(topLight);
 
 const pmrem = new THREE.PMREMGenerator(renderer);
-new RGBELoader(loadingManager).load("https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/studio_small_09_1k.hdr", (texture) => {
+new RGBELoader().load("https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/studio_small_09_1k.hdr", (texture) => {
   scene.environment = pmrem.fromEquirectangular(texture).texture;
   texture.dispose();
 });
 
-// SAFETY FALLBACK: Hide loader after 15 seconds no matter what
+// SAFETY FALLBACK: Hide loader after 10 seconds no matter what
 setTimeout(() => {
   if (loaderOverlay && !loaderOverlay.classList.contains('loader-hidden')) {
     console.warn('Loading taking too long, forcing loader hide');
     loaderOverlay.classList.add('loader-hidden');
   }
-}, 15000);
+}, 10000);
 
 const carAnchor = new THREE.Group();
 scene.add(carAnchor);
@@ -171,11 +171,9 @@ const loaderOverlay = document.getElementById('loader');
 loadingManager.onProgress = (url, itemsLoaded, itemsTotal) => {
   const progress = (itemsLoaded / itemsTotal) * 100;
   if (progressFill) progressFill.style.width = progress + '%';
-  console.log(`Loading: ${url} (${itemsLoaded}/${itemsTotal})`);
 };
 
 loadingManager.onLoad = () => {
-  console.log('All assets loaded');
   setTimeout(() => {
     if (loaderOverlay) loaderOverlay.classList.add('loader-hidden');
   }, 500);
@@ -183,20 +181,19 @@ loadingManager.onLoad = () => {
 
 loadingManager.onError = (url) => {
   console.error('There was an error loading ' + url);
-  // Force hide loader if an error occurs so the user isn't stuck
   setTimeout(() => {
     if (loaderOverlay) loaderOverlay.classList.add('loader-hidden');
-  }, 2000);
+  }, 1000);
 };
 
 const loader = new GLTFLoader(loadingManager);
 
 const carData = [
-  { name: "BMW M5 EV", logo: "/Pictures/bmwLogo.png", model: '/Car3Dmodels/bmw.glb', price: "₹2.25 Cr", speed: "320 km/h", power: "1135 HP", gearbox: "9-Speed Auto" },
-  { name: "LAMBO REVUELTO", logo: "/Pictures/lamborghiniLogo.png", model: '/Car3Dmodels/lamborghini.glb', price: "₹9.50 Cr", speed: "350 km/h", power: "1015 HP", gearbox: "8-Speed DCT" },
-  { name: "PORSCHE GT3 RS", logo: "/Pictures/porscheLogo.png", model: '/Car3Dmodels/porsche.glb', price: "₹3.85 Cr", speed: "312 km/h", power: "525 HP", gearbox: "7-Speed PDK" },
-  { name: "NISSAN R34 LEGACY", logo: "/Pictures/nissanLogo.png", model: '/Car3Dmodels/R34.glb', price: "₹1.10 Cr", speed: "285 km/h", power: "650 HP", gearbox: "6-Speed Manual" },
-  { name: "SRT HELLCAT REVENANT", logo: "/Pictures/dodgeLogo.png", model: '/Car3Dmodels/srt.glb', price: "₹1.20 Cr", speed: "327 km/h", power: "807 HP", gearbox: "8-Speed Auto" }
+  { name: "BMW M5 EV", logo: "Pictures/bmwLogo.png", model: 'Car3Dmodels/bmw.glb', price: "₹2.25 Cr", speed: "320 km/h", power: "1135 HP", gearbox: "9-Speed Auto" },
+  { name: "LAMBO REVUELTO", logo: "Pictures/lamborghiniLogo.png", model: 'Car3Dmodels/lamborghini.glb', price: "₹9.50 Cr", speed: "350 km/h", power: "1015 HP", gearbox: "8-Speed DCT" },
+  { name: "PORSCHE GT3 RS", logo: "Pictures/porscheLogo.png", model: 'Car3Dmodels/porsche.glb', price: "₹3.85 Cr", speed: "312 km/h", power: "525 HP", gearbox: "7-Speed PDK" },
+  { name: "NISSAN R34 LEGACY", logo: "Pictures/nissanLogo.png", model: 'Car3Dmodels/R34.glb', price: "₹1.10 Cr", speed: "285 km/h", power: "650 HP", gearbox: "6-Speed Manual" },
+  { name: "SRT HELLCAT REVENANT", logo: "Pictures/dodgeLogo.png", model: 'Car3Dmodels/srt.glb', price: "₹1.20 Cr", speed: "327 km/h", power: "807 HP", gearbox: "8-Speed Auto" }
 ];
 
 const preloadedModels = {};
