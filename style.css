@@ -183,9 +183,9 @@ body {
 
 @media (max-width: 768px) {
   .car-title {
-    top: 150px;
-    font-size: 2rem;
-    letter-spacing: 4px;
+    top: 130px;
+    font-size: 1.8rem;
+    letter-spacing: 3px;
     opacity: 0.6;
     width: 95%;
   }
@@ -193,14 +193,24 @@ body {
     top: 20px;
     right: 50%;
     transform: translateX(50%);
-    width: 120px;
+    width: 100px;
   }
   .specs {
     grid-template-columns: repeat(2, 1fr);
-    bottom: 3vh;
+    bottom: 6vh; /* Increased from 3vh for better visibility on tall screens */
+    gap: 10px;
+    width: 92%;
+  }
+  .spec-card {
+    padding: 10px;
+  }
+  .spec-value {
+    font-size: 1.1rem;
   }
   .nav-btn {
-    bottom: 25vh;
+    bottom: 28vh;
     top: auto;
+    width: 45px;
+    height: 45px;
   }
 }
