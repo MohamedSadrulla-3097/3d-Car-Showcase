@@ -1,67 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CAR SHOWCASE</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CAR SHOWCASE</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+        />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet">
+        <link rel="stylesheet" href="style.css" />
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23ffffff' d='M135.2 117.4L109.1 192H402.9l-26.1-74.6C372.3 104.6 360.2 96 346.6 96H165.4c-13.6 0-25.7 8.6-30.2 21.4zM39.6 196.8L74.8 96.3C88.3 58.1 124.3 32 165.4 32H346.6c41.1 0 77.1 26.1 90.6 64.3l35.2 100.5c23.2 9.6 39.6 32.5 39.6 59.2V400c0 17.7-14.3 32-32 32H448c-17.7 0-32-14.3-32-32V384H96v16c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V256c0-26.7 16.4-49.6 39.6-59.2zM128 288a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm288 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64z'/></svg>"
+        />
+    </head>
 
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23ffffff' d='M135.2 117.4L109.1 192H402.9l-26.1-74.6C372.3 104.6 360.2 96 346.6 96H165.4c-13.6 0-25.7 8.6-30.2 21.4zM39.6 196.8L74.8 96.3C88.3 58.1 124.3 32 165.4 32H346.6c41.1 0 77.1 26.1 90.6 64.3l35.2 100.5c23.2 9.6 39.6 32.5 39.6 59.2V400c0 17.7-14.3 32-32 32H448c-17.7 0-32-14.3-32-32V384H96v16c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V256c0-26.7 16.4-49.6 39.6-59.2zM128 288a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm288 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64z'/></svg>">
-</head>
+    <body>
+        <section class="showcase">
+            <!-- Loading Overlay -->
+            <div id="loader" class="loader-overlay">
+                <div class="loader-content">
+                    <h2 class="loader-text">OPTIMIZING PERFORMANCE</h2>
+                    <div class="progress-bar">
+                        <div id="progress" class="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
 
-<body>
+            <!-- Branding Header -->
+            <img
+                id="carLogo"
+                class="car-logo"
+                src="Pictures/bmwLogo.png"
+                alt="Car Brand"
+            />
+            <h1 id="carName" class="car-title">BMW M5 EV</h1>
 
-  <section class="showcase">
-    <!-- Loading Overlay -->
-    <div id="loader" class="loader-overlay">
-      <div class="loader-content">
-        <h2 class="loader-text">OPTIMIZING PERFORMANCE</h2>
-        <div class="progress-bar">
-          <div id="progress" class="progress-fill"></div>
-        </div>
-      </div>
-    </div>
+            <div id="dCanvas" class="canvas-box"></div>
 
-    <!-- Branding Header -->
-    <img id="carLogo" class="car-logo" src="Pictures/bmwLogo.png" alt="Car Brand">
-    <h1 id="carName" class="car-title">BMW M5 EV</h1>
+            <!-- Navigation -->
+            <div class="nav-container nav-left">
+                <button id="prevCar" class="nav-btn"></button>
+                <span class="nav-hint">A / ←</span>
+            </div>
+            <div class="nav-container nav-right">
+                <button id="nextCar" class="nav-btn"></button>
+                <span class="nav-hint">D / →</span>
+            </div>
+            <!-- Specs Dashboard -->
+            <div class="specs">
+                <div class="spec-card">
+                    <span class="spec-label">Price</span>
+                    <div class="spec-value" id="specPrice">---</div>
+                </div>
+                <div class="spec-card">
+                    <span class="spec-label">Speed</span>
+                    <div class="spec-value" id="specSpeed">---</div>
+                </div>
+                <div class="spec-card">
+                    <span class="spec-label">Power</span>
+                    <div class="spec-value" id="specPower">---</div>
+                </div>
+                <div class="spec-card">
+                    <span class="spec-label">Gearbox</span>
+                    <div class="spec-value" id="specGearbox">---</div>
+                </div>
+            </div>
+        </section>
 
-    <div id="dCanvas" class="canvas-box"></div>
-
-    <!-- Navigation -->
-    <button id="prevCar" class="nav-btn">PREV</button>
-    <button id="nextCar" class="nav-btn">NEXT</button>
-
-    <!-- Specs Dashboard -->
-    <div class="specs">
-      <div class="spec-card">
-        <span class="spec-label">Est. Price</span>
-        <div class="spec-value" id="specPrice">---</div>
-      </div>
-      <div class="spec-card">
-        <span class="spec-label">Top Speed</span>
-        <div class="spec-value" id="specSpeed">---</div>
-      </div>
-      <div class="spec-card">
-        <span class="spec-label">Max Power</span>
-        <div class="spec-value" id="specPower">---</div>
-      </div>
-      <div class="spec-card">
-        <span class="spec-label">Transmission</span>
-        <div class="spec-value" id="specGearbox">---</div>
-      </div>
-    </div>
-
-  </section>
-
-  <script type="module" src="app.js"></script>
-</body>
-
+        <script type="module" src="app.js"></script>
+    </body>
 </html>
