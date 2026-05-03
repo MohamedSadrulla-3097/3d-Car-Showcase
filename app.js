@@ -232,7 +232,8 @@ function setupCarModel(model, currentRotation) {
   const center = box.getCenter(new THREE.Vector3());
   const size = box.getSize(new THREE.Vector3());
   const maxDim = Math.max(size.x, size.y, size.z);
-  const carScaleFactor = window.innerWidth < 768 ? 7.2 : 6.5;
+  // Increased scale factors for bigger car appearance
+  const carScaleFactor = window.innerWidth < 768 ? 7.8 : 9.0;
   const scale = carScaleFactor / maxDim;
   object.scale.setScalar(scale);
   const bottomY = center.y - size.y / 2;
