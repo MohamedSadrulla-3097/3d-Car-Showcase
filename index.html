@@ -32,27 +32,33 @@
                 </div>
             </div>
 
-            <!-- Branding Header -->
-            <img
-                id="carLogo"
-                class="car-logo"
-                src="Pictures/bmwLogo.png"
-                alt="Car Brand"
-            />
-            <h1 id="carName" class="car-title">BMW M5 EV</h1>
-
-            <div id="dCanvas" class="canvas-box"></div>
-
-            <!-- Navigation -->
-            <div class="nav-container nav-left">
-                <button id="prevCar" class="nav-btn"></button>
-                <span class="nav-hint">A / ←</span>
+            <!-- Top Branding -->
+            <div class="branding-header">
+                <img
+                    id="carLogo"
+                    class="car-logo"
+                    src="Pictures/bmwLogo.png"
+                    alt="Car Brand"
+                />
+                <h1 id="carName" class="car-title">BMW M5 EV</h1>
             </div>
-            <div class="nav-container nav-right">
-                <button id="nextCar" class="nav-btn"></button>
-                <span class="nav-hint">D / →</span>
+
+            <!-- Middle 3D Area -->
+            <div class="canvas-area">
+                <div id="dCanvas" class="canvas-box"></div>
+
+                <!-- Navigation inside Canvas Area -->
+                <div class="nav-container nav-left">
+                    <button id="prevCar" class="nav-btn"></button>
+                    <span class="nav-hint">A / ←</span>
+                </div>
+                <div class="nav-container nav-right">
+                    <button id="nextCar" class="nav-btn"></button>
+                    <span class="nav-hint">D / →</span>
+                </div>
             </div>
-            <!-- Specs Dashboard -->
+
+            <!-- Bottom Specs -->
             <div class="specs">
                 <div class="spec-card">
                     <span class="spec-label">Price</span>

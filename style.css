@@ -24,14 +24,53 @@ body {
 .showcase {
     position: relative;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height for mobile browsers */
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
+    padding: clamp(10px, 4vh, 40px) 20px;
+    box-sizing: border-box;
 }
 
-/* FULL SCREEN CANVAS FOR VISIBILITY */
+/* TOP BRANDING */
+.branding-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 100;
+    flex: 0 0 auto;
+}
+
+.car-title {
+    font-family: var(--font-main);
+    font-size: clamp(2rem, 8vw, 6rem);
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #000000;
+    text-align: center;
+    pointer-events: none;
+}
+
+.car-logo {
+    width: clamp(50px, 8vw, 80px);
+    margin-bottom: 5px;
+    object-fit: contain;
+}
+
+/* MIDDLE 3D AREA */
+.canvas-area {
+    flex: 1 1 auto;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0; /* Important for flex child with overflow */
+}
+
 .canvas-box {
     position: absolute;
     top: 0;
@@ -41,35 +80,6 @@ body {
     z-index: 1;
 }
 
-/* TOP CENTERED TITLE */
-.car-title {
-    position: absolute;
-    top: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    font-family: var(--font-main);
-    font-size: clamp(3rem, 8vw, 7rem);
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: #000000;
-    z-index: 10;
-    text-align: center;
-    pointer-events: none;
-}
-
-/* LOGO */
-.car-logo {
-    position: absolute;
-    top: 30px;
-    right: 40px;
-    width: clamp(80px, 10vw, 120px);
-    z-index: 100;
-    object-fit: contain;
-    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.1));
-}
-
-/* NAVIGATION */
 /* NAVIGATION */
 .nav-container {
     position: absolute;
@@ -83,17 +93,17 @@ body {
 }
 
 .nav-left {
-    left: 50px;
+    left: 0;
 }
 .nav-right {
-    right: 50px;
+    right: 0;
 }
 
 .nav-btn {
     background: #000000;
     border: none;
-    width: 60px;
-    height: 60px;
+    width: clamp(45px, 6vw, 60px);
+    height: clamp(45px, 6vw, 60px);
     border-radius: 50%;
     cursor: pointer;
     display: flex;
@@ -103,12 +113,11 @@ body {
         transform 0.2s ease,
         opacity 0.2s ease;
     padding: 0;
-    position: relative;
 }
 
 .nav-hint {
-    font-size: 12px;
-    font-weight: 600;
+    font-size: 10px;
+    font-weight: 700;
     color: #888888;
     text-transform: uppercase;
     pointer-events: none;
@@ -122,53 +131,48 @@ body {
 .nav-btn::before {
     content: "";
     position: absolute;
-    width: 16px;
-    height: 16px;
-    border-top: 4px solid #ffffff;
-    border-right: 4px solid #ffffff;
+    width: 14px;
+    height: 14px;
+    border-top: 3px solid #ffffff;
+    border-right: 3px solid #ffffff;
     display: block;
 }
 
 #prevCar::before {
     transform: rotate(-135deg);
-    margin-left: 6px;
+    margin-left: 4px;
 }
-
 #nextCar::before {
     transform: rotate(45deg);
-    margin-right: 6px;
+    margin-right: 4px;
 }
 
 /* BOTTOM SPECS */
 .specs {
-    position: absolute;
-    bottom: clamp(15px, 3vh, 30px);
-    left: 50%;
-    transform: translateX(-50%);
-    width: 95%;
+    width: 100%;
     max-width: 1400px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: clamp(10px, 2vw, 15px);
+    gap: clamp(10px, 2vw, 20px);
     z-index: 2000;
+    flex: 0 0 auto;
 }
 
 .spec-card {
     background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.05);
-    padding: clamp(10px, 2vh, 18px) clamp(15px, 2vw, 25px);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.05);
+    padding: clamp(12px, 2vh, 20px);
     border-radius: 12px;
     text-align: left;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: auto;
 }
 
 .spec-label {
     display: block;
-    font-size: clamp(11px, 1.5vh, 13px);
+    font-size: clamp(10px, 1.5vh, 13px);
     font-weight: 600;
     color: #888888;
     margin-bottom: 2px;
@@ -176,7 +180,7 @@ body {
 
 .spec-value {
     font-family: var(--font-main);
-    font-size: clamp(0.9rem, 2vh, 1.1rem);
+    font-size: clamp(0.85rem, 2vh, 1.1rem);
     color: #000000;
     font-weight: 700;
 }
@@ -234,42 +238,23 @@ body {
 @media (max-width: 900px) {
     .specs {
         grid-template-columns: repeat(2, 1fr);
-        bottom: 20px;
-        gap: 15px;
-    }
-    .spec-card {
-        padding: 20px 15px;
-        min-height: 90px;
-    }
-    .spec-label {
-        font-size: 16px;
+        gap: 12px;
     }
 }
 
 @media (max-width: 768px) {
-    .car-title {
-        top: 80px;
-        font-size: 2.5rem;
+    .showcase {
+        padding: 15px;
     }
-    .car-logo {
-        top: 20px;
-        right: 50%;
-        transform: translateX(50%);
+    .car-title {
+        font-size: 2.2rem;
     }
     .nav-container {
-        top: 65%; /* Lowered from the car */
-    }
-    .nav-left {
-        left: 20px;
-    }
-    .nav-right {
-        right: 20px;
-    }
-    .nav-btn {
-        width: 45px;
-        height: 45px;
+        top: auto;
+        bottom: 20px;
+        transform: none;
     }
     .nav-hint {
-        display: none; /* Hide keyboard hints on mobile */
+        display: none;
     }
 }
