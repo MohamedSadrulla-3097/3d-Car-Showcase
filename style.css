@@ -142,48 +142,43 @@ body {
 /* BOTTOM SPECS */
 .specs {
     position: absolute;
-    bottom: 30px;
+    bottom: clamp(15px, 3vh, 30px);
     left: 50%;
     transform: translateX(-50%);
     width: 95%;
     max-width: 1400px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: clamp(10px, 2vw, 15px);
     z-index: 2000;
 }
 
 .spec-card {
-    background: rgba(
-        255,
-        255,
-        255,
-        0.95
-    ); /* More opaque white for visibility */
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.1);
-    padding: 30px 20px;
-    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.05);
+    padding: clamp(10px, 2vh, 18px) clamp(15px, 2vw, 25px);
+    border-radius: 12px;
     text-align: left;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 120px;
+    min-height: auto;
 }
 
 .spec-label {
     display: block;
-    font-size: 20px;
-    font-weight: 700;
-    color: #000000;
-    margin-bottom: 5px;
+    font-size: clamp(11px, 1.5vh, 13px);
+    font-weight: 600;
+    color: #888888;
+    margin-bottom: 2px;
 }
 
 .spec-value {
     font-family: var(--font-main);
-    font-size: 1.1rem;
-    color: var(--text-dim);
-    font-weight: 500;
+    font-size: clamp(0.9rem, 2vh, 1.1rem);
+    color: #000000;
+    font-weight: 700;
 }
 
 /* LOADER OVERLAY */
